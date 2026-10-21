@@ -1,0 +1,233 @@
+name: 'Media center: Seeds UI cards'
+description: 'Renders Media center News and Event cards with the Seeds UI card component, using Display Suite and UI Patterns.'
+type: 'Content type'
+recipes:
+  # Sibling recipe: Composer installs both into the same recipes/ folder.
+  - media_center_recipe
+install:
+  - ds
+  - ui_patterns
+  - ui_patterns_layouts
+  - seeds_ui
+config:
+  # Only the Card view mode changes. Display Suite places our fields into the
+  # Seeds UI card slots (image, body, link). The "title" slot is left out on
+  # purpose: the node's built-in Title field is always in the render array
+  # under the key "title", and core fills same-named component slots from it.
+  # Adding our own title there would print it twice.
+  actions:
+    core.entity_view_display.node.news.card:
+      setThirdPartySettings:
+        - module: ds
+          key: layout
+          value:
+            id: 'ui_patterns:seeds_ui:seeds_ui_card'
+            library: null
+            disable_css: false
+            entity_classes: all_classes
+            settings:
+              label: ''
+              ui_patterns:
+                component_id: 'seeds_ui:seeds_ui_card'
+                variant_id:
+                  source_id: select
+                  source:
+                    value: default
+                slots: {  }
+                props:
+                  element__wrapper:
+                    source_id: select
+                    source:
+                      value: 'article'
+                  image_scale:
+                    source_id: checkbox
+                    source:
+                      value: true
+                  radius:
+                    source_id: select
+                    source:
+                      value: '12'
+                  text_position:
+                    source_id: select
+                    source:
+                      value: 'justify-content-start'
+                  background_brightness:
+                    source_id: select
+                    source:
+                      value: '0'
+                  text_color:
+                    source_id: select
+                    source:
+                      value: 'black'
+                  extra_wrapper_class:
+                    source_id: textfield
+                    source:
+                      value: ''
+                  content_wrapper_extra_class:
+                    source_id: textfield
+                    source:
+                      value: ''
+        - module: ds
+          key: regions
+          value:
+            image:
+              - field_media
+            body:
+              - field_text_formatted_summary
+            link:
+              - node_link
+        - module: ds
+          key: fields
+          value:
+            node_link:
+              plugin_id: node_link
+              weight: 20
+              label: hidden
+              formatter: default
+              settings:
+                'link text': 'Read more'
+                'link class': ''
+                wrapper: ''
+                class: ''
+                link: 1
+      setComponents:
+        - name: field_media
+          options:
+            type: media_thumbnail
+            label: hidden
+            settings:
+              image_link: content
+              image_style: medium
+              image_loading:
+                attribute: lazy
+            third_party_settings: {  }
+            weight: 0
+            region: image
+        - name: field_text_formatted_summary
+          options:
+            type: text_summary_or_trimmed
+            label: hidden
+            settings:
+              trim_length: 200
+            third_party_settings: {  }
+            weight: 5
+            region: body
+    core.entity_view_display.node.event.card:
+      setThirdPartySettings:
+        - module: ds
+          key: layout
+          value:
+            id: 'ui_patterns:seeds_ui:seeds_ui_card'
+            library: null
+            disable_css: false
+            entity_classes: all_classes
+            settings:
+              label: ''
+              ui_patterns:
+                component_id: 'seeds_ui:seeds_ui_card'
+                variant_id:
+                  source_id: select
+                  source:
+                    value: default
+                slots: {  }
+                props:
+                  element__wrapper:
+                    source_id: select
+                    source:
+                      value: 'article'
+                  image_scale:
+                    source_id: checkbox
+                    source:
+                      value: true
+                  radius:
+                    source_id: select
+                    source:
+                      value: '12'
+                  text_position:
+                    source_id: select
+                    source:
+                      value: 'justify-content-start'
+                  background_brightness:
+                    source_id: select
+                    source:
+                      value: '0'
+                  text_color:
+                    source_id: select
+                    source:
+                      value: 'black'
+                  extra_wrapper_class:
+                    source_id: textfield
+                    source:
+                      value: ''
+                  content_wrapper_extra_class:
+                    source_id: textfield
+                    source:
+                      value: ''
+        - module: ds
+          key: regions
+          value:
+            image:
+              - field_media
+            body:
+              - field_date_range
+              - field_text
+              - field_text_formatted_summary
+            link:
+              - node_link
+        - module: ds
+          key: fields
+          value:
+            node_link:
+              plugin_id: node_link
+              weight: 20
+              label: hidden
+              formatter: default
+              settings:
+                'link text': 'Read more'
+                'link class': ''
+                wrapper: ''
+                class: ''
+                link: 1
+      setComponents:
+        - name: field_media
+          options:
+            type: media_thumbnail
+            label: hidden
+            settings:
+              image_link: content
+              image_style: medium
+              image_loading:
+                attribute: lazy
+            third_party_settings: {  }
+            weight: 0
+            region: image
+        - name: field_date_range
+          options:
+            type: daterange_default
+            label: hidden
+            settings:
+              timezone_override: ''
+              format_type: medium
+              from_to: both
+              separator: '-'
+            third_party_settings: {  }
+            weight: 2
+            region: body
+        - name: field_text
+          options:
+            type: string
+            label: inline
+            settings:
+              link_to_entity: false
+            third_party_settings: {  }
+            weight: 3
+            region: body
+        - name: field_text_formatted_summary
+          options:
+            type: text_summary_or_trimmed
+            label: hidden
+            settings:
+              trim_length: 200
+            third_party_settings: {  }
+            weight: 5
+            region: body
