@@ -32,15 +32,18 @@ no background overlay. Change them under the Card display's layout settings.
 
 ## Installation
 
-Both recipes are on GitHub for now, so add both repositories first:
+Both recipes are on GitHub for now, so add both repositories first, then require both
+(Composer only accepts dev versions you ask for directly):
 
 ```bash
-composer config repositories.media_center_recipe vcs https://github.com/AhmedAldeek03/media_center_recipe
-composer config repositories.media_center_seeds vcs https://github.com/AhmedAldeek03/media_center_seeds
-composer require drupal/media_center_seeds:1.0.x-dev@dev
+composer config repositories.media_center_recipe '{"type": "vcs", "url": "https://github.com/AhmedAldeek03/media_center_recipe", "no-api": true}'
+composer config repositories.media_center_seeds '{"type": "vcs", "url": "https://github.com/AhmedAldeek03/media_center_seeds", "no-api": true}'
+composer require drupal/media_center_recipe:1.0.x-dev@dev drupal/media_center_seeds:1.0.x-dev@dev
 drush recipe ../recipes/media_center_seeds
 drush cache:rebuild
 ```
+
+`"no-api": true` makes Composer clone over HTTPS, so it works without a GitHub token or SSH key.
 
 With DDEV, put `ddev` before each command.
 
