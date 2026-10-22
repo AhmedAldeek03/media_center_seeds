@@ -73,7 +73,7 @@ config:
             image:
               - field_media
             body:
-              - field_text_formatted_summary
+              - field_body
             link:
               - node_link
         - module: ds
@@ -103,7 +103,7 @@ config:
             third_party_settings: {  }
             weight: 0
             region: image
-        - name: field_text_formatted_summary
+        - name: field_body
           options:
             type: text_summary_or_trimmed
             label: hidden
@@ -170,8 +170,8 @@ config:
               - field_media
             body:
               - field_date_range
-              - field_text
-              - field_text_formatted_summary
+              - field_plain_text
+              - field_body
             link:
               - node_link
         - module: ds
@@ -213,7 +213,7 @@ config:
             third_party_settings: {  }
             weight: 2
             region: body
-        - name: field_text
+        - name: field_plain_text
           options:
             type: string
             label: inline
@@ -222,7 +222,7 @@ config:
             third_party_settings: {  }
             weight: 3
             region: body
-        - name: field_text_formatted_summary
+        - name: field_body
           options:
             type: text_summary_or_trimmed
             label: hidden
