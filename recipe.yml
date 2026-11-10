@@ -1,5 +1,5 @@
 name: 'Media center: Seeds UI cards'
-description: 'Renders Media center News and Event cards with the Seeds UI card component, using Display Suite and UI Patterns.'
+description: 'Renders Media center News and Event cards with the Seeds UI card component (Display Suite and UI Patterns), and shows the home page News and Events blocks as Swiper card carousels.'
 type: 'Content type'
 recipes:
   # Sibling recipe: Composer installs both into the same recipes/ folder.
@@ -9,6 +9,8 @@ install:
   - ui_patterns
   - ui_patterns_layouts
   - seeds_ui
+  # Card carousels for the home page blocks (config/: the Seeds cards template).
+  - swiper_formatter
 config:
   # Only the Card view mode changes. Display Suite places our fields into the
   # Seeds UI card slots (image, body, link). The "title" slot is left out on
@@ -16,6 +18,54 @@ config:
   # under the key "title", and core fills same-named component slots from it.
   # Adding our own title there would print it twice.
   actions:
+    # The home page block as a card carousel (Swiper, Seeds cards template),
+    # with six items so there is something to slide to.
+    views.view.news:
+      setProperties:
+        display.block_home.display_options.style:
+          type: swiper_formatter
+          options:
+            template: seeds_cards
+            caption: null
+            caption_type: caption_default
+            caption_summary: null
+            caption_breakpoint: null
+            custom_link: null
+            id: swiper-news-block-home
+        display.block_home.display_options.defaults.style: false
+        # Opt-in hook for the Seeds site theme's card carousel styles.
+        display.block_home.display_options.css_class: seeds-card-carousel
+        display.block_home.display_options.defaults.css_class: false
+        display.block_home.display_options.pager:
+          type: some
+          options:
+            offset: 0
+            items_per_page: 6
+        display.block_home.display_options.display_description: 'Latest 6 items in a carousel, for the home page.'
+    # The home page block as a card carousel (Swiper, Seeds cards template),
+    # with six items so there is something to slide to.
+    views.view.events:
+      setProperties:
+        display.block_home.display_options.style:
+          type: swiper_formatter
+          options:
+            template: seeds_cards
+            caption: null
+            caption_type: caption_default
+            caption_summary: null
+            caption_breakpoint: null
+            custom_link: null
+            id: swiper-events-block-home
+        display.block_home.display_options.defaults.style: false
+        # Opt-in hook for the Seeds site theme's card carousel styles.
+        display.block_home.display_options.css_class: seeds-card-carousel
+        display.block_home.display_options.defaults.css_class: false
+        display.block_home.display_options.pager:
+          type: some
+          options:
+            offset: 0
+            items_per_page: 6
+        display.block_home.display_options.display_description: 'Latest 6 items in a carousel, for the home page.'
     core.entity_view_display.node.news.card:
       setThirdPartySettings:
         - module: ds

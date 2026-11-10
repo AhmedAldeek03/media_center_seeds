@@ -4,8 +4,8 @@ A companion recipe for [Media center](https://github.com/AhmedAldeek03/media_cen
 It renders the **Card** view mode of News and Event with the Seeds UI card component
 (`seeds_ui:seeds_ui_card`), so listings match the rest of a Seeds site.
 
-Only the Card view mode changes. Content types, fields, views and the Default view mode stay
-as Media center sets them up.
+It also shows the **home page** News and Events blocks as card carousels (Swiper). Content types,
+fields, the other views displays and the Default view mode stay as Media center sets them up.
 
 ## What it does
 
@@ -24,11 +24,20 @@ as Media center sets them up.
 Card options: `article` wrapper, image zoom on hover, 12px rounded corners, dark text,
 no background overlay. Change them under the Card display's layout settings.
 
+- Installs [Swiper Formatter](https://www.drupal.org/project/swiper_formatter) and its **Seeds cards**
+  template: whole cards only, one on phones, two from 576px, three on large screens,
+  arrows and dots, no autoplay. It uses the Swiper copy shipped with the module: no download or CDN.
+- Switches the **News: Home page** and **Events: Home page** blocks to that carousel, with six items,
+  and gives them the CSS class `seeds-card-carousel`, which the Seeds site theme styles (equal-height
+  cards, dots and arrows in one row under them). Change the carousel at
+  **Configuration > Content authoring > Swiper formatter**.
+
 ## Requirements
 
 - Drupal 11
 - Media center (`drupal/media_center_recipe`)
 - Seeds UI, Display Suite and UI Patterns 2
+- Swiper Formatter 3.1 (Drupal 11.4 or later)
 
 ## Installation
 

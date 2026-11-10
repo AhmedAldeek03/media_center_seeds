@@ -1,0 +1,91 @@
+langcode: en
+status: true
+dependencies: {}
+id: seeds_cards
+label: Seeds cards
+description: 'Card carousels (News and Events on the home page): whole cards only,
+  one on phones, two from 576px, three on large screens; arrows and dots, no autoplay.
+  Uses the Swiper copy shipped with the module.'
+breakpoint: false
+swiper_options:
+  source: package
+  autoHeight: false
+  width: null
+  height: null
+  breakpointsBase: window
+  observer: false
+  updateOnWindowResize: true
+  resizeObserver: true
+  direction: horizontal
+  effect: slide
+  loop: false
+  rewind: false
+  centeredSlides: false
+  speed: 500
+  slidesPerView: 1.0
+  spaceBetween: 16
+  slidesPerGroup: 1
+  loopedSlides: 1
+  noSwipingSelector: .no-swipe, button, input
+  mousewheel: false
+  grabCursor: true
+  simulateTouch: true
+  allowTouchMove: true
+  cssMode: false
+  grid:
+    enabled: false
+    rows: 1
+    fill: column
+  keyboard:
+    enabled: true
+    onlyInViewport: true
+    pageUpDown: true
+  autoplay:
+    enabled: false
+    delay: 4000
+    disableOnInteraction: true
+    pauseOnMouseEnter: false
+    reverseDirection: false
+    stopOnLastSlide: false
+    waitForTransition: true
+  navigation:
+    enabled: true
+    hideOnClick: false
+  pagination:
+    enabled: true
+    type: bullets
+    dynamicBullets: false
+    clickable: true
+  scrollbar:
+    enabled: false
+    draggable: false
+    dragSize: auto
+    hide: true
+    snapOnRelease: false
+  zoom:
+    enabled: false
+    limitToOriginalSize: false
+    maxRatio: 3
+    minRatio: 1
+    panOnMouseMove: false
+    toggle: true
+  breakpoints:
+  - breakpoint: '576'
+    swiper_template: null
+    weight: 0
+    slidesPerView: 2.0
+    slidesPerGroup: 1
+    spaceBetween: 20
+  - breakpoint: '1200'
+    swiper_template: null
+    weight: 1
+    slidesPerView: 3.0
+    slidesPerGroup: 1
+    spaceBetween: 32
+  lazy:
+    enabled: false
+    checkInView: false
+    loadOnTransitionStart: false
+    loadPrevNext: false
+    loadPrevNextAmount: 1
+    scrollingElement: window

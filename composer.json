@@ -1,6 +1,6 @@
 {
     "name": "drupal/media_center_seeds",
-    "description": "Renders Media center News and Event cards with the Seeds UI card component.",
+    "description": "Renders Media center News and Event cards with the Seeds UI card component, and the home page blocks as Swiper card carousels.",
     "type": "drupal-recipe",
     "license": "GPL-2.0-or-later",
     "require": {
@@ -8,6 +8,7 @@
         "drupal/media_center_recipe": "^1.0@dev",
         "drupal/seeds_ui": "^1.0",
         "drupal/ds": "^3.24",
-        "drupal/ui_patterns": "^2.0"
+        "drupal/ui_patterns": "^2.0",
+        "drupal/swiper_formatter": "^3.1"
     }
 }
